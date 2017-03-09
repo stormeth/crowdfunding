@@ -9,6 +9,7 @@ contract('Cf1', function(accounts) {
         var ac1 = accounts[0];
         var ac2 = accounts[1];
         var ac3 = accounts[2];
+        var ac4 = accounts[3];
 
         var goal = 10;
 
@@ -17,7 +18,6 @@ contract('Cf1', function(accounts) {
 
             return meta.newCampaign(ac1, goal);
         }).then(function() {
-
             return meta.getNumberOfCampaigns.call();
         }).then(function(num) {
             console.log(num);
@@ -27,10 +27,19 @@ contract('Cf1', function(accounts) {
                 // console.log('tx1',tx1);
             })
         }).then(function() {
-            return meta.newCampaign(ac3, goal);
+            return meta.getNumberOfCampaigns.call();
+        }).then(function(num) {
+            console.log(num);
 
         }).then(function() {
             return meta.newCampaign(ac3, goal);
+        }).then(function() {
+            return meta.getNumberOfCampaigns.call();
+        }).then(function(num) {
+            console.log(num);
+
+        }).then(function() {
+            return meta.newCampaign(ac4, goal);
 
         }).then(function() {
             return meta.contribute(ac1);

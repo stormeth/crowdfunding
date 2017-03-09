@@ -51,4 +51,8 @@ contract CrowdFunding {
         return numCampaigns;
 	}
 
+    function getCampaignAmount(uint campaignID) returns(uint) {
+        Campaign c = campaigns[campaignID];
+        return c.amount;
+    }
 }

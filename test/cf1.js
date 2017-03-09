@@ -14,21 +14,32 @@ contract('Cf1', function(accounts) {
 
         return CrowdFunding.deployed().then(function(instance) {
             meta = instance;
-            return meta.newCampaign(ac1,goal)
 
-        }).then(function(c1) {
-            console.log('c1 = ', c1)
-            return meta.newCampaign(ac2, goal).then(function(tx) {
+            return meta.newCampaign(ac1, goal);
+        }).then(function() {
+            return meta.newCampaign(ac2,goal).then(function(tx2) {
                 // console.log(tx);
             })
+        }).then(function() {
+            return meta.newCampaign(ac3, goal);
 
-        }).then(function(c2) {
-            console.log('c2 = ', c2)
+        }).then(function() {
             return meta.newCampaign(ac3, goal)
 
-        }).then(function(c3) {
-            console.log('c3 = ', c3)
-            assert.equal(1, 1, "assert not working");
+        }).then(function() {
+
+            return meta.contribute(ac1);
+        }).then(function(payable1) {
+            console.log('p1', payable1);
+
+            return meta.contribute(ac2);
+        }).then(function(payable2) {
+            console.log('p2', payable2);
+
+            return meta.contribute(ac3);
+        }).then(function(payable3) {
+            console.log('p3', payable3);
+            assert.equal(3, 3, "assert not working");
         });
     });
 });

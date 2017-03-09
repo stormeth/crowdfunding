@@ -2,10 +2,21 @@ var CrowdFunding = artifacts.require("./CrowdFunding.sol");
 
 var TestUtils = {
 
+    printObj: function(obj) {
+        for (var key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                console.log(key + " -> " + obj[key]);
+            }
+        }
+    },
+
     check: function(meta) {
-        return meta.getNumberOfCampaigns.call().then(function(num) {
-        console.log(num);
-        console.log('Bye...')
+        return meta.getNumberOfCampaigns.call().then(function(p) {
+        var numofcampaigns = p.c[0]
+        console.log(typeof(p));
+        TestUtils.printObj(p);
+        console.log(typeof(numofcampaigns));
+        console.log('number of campaigns = ', numofcampaigns);
     })
     }
 /*

@@ -46,4 +46,9 @@ contract CrowdFunding {
             throw;
         return true;
     }
+
+    function getNumberOfCampaigns() returns(uint) {
+        return numCampaigns;
+	}
+
 }

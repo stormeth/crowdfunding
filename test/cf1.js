@@ -17,8 +17,14 @@ contract('Cf1', function(accounts) {
 
             return meta.newCampaign(ac1, goal);
         }).then(function() {
+
+            return meta.getNumberOfCampaigns.call();
+        }).then(function(num) {
+            console.log(num);
+
+        }).then(function() {
             return meta.newCampaign(ac2,goal).then(function(tx1) {
-                console.log('tx1',tx1);
+                // console.log('tx1',tx1);
             })
         }).then(function() {
             return meta.newCampaign(ac3, goal);
@@ -31,11 +37,15 @@ contract('Cf1', function(accounts) {
 
         }).then(function() {
             return meta.contribute(ac2).then(function(tx2) {
-                console.log('tx2', tx2);
+                // console.log('tx2', tx2);
             })
             return meta.contribute(ac3);
         }).then(function() {
             assert.equal(3, 3, "assert not working");
+
+            return meta.getNumberOfCampaigns.call();
+        }).then(function(num) {
+            console.log(num);
         });
     });
 });

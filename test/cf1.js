@@ -1,3 +1,4 @@
+var TestUtils = require('./testutils')
 var CrowdFunding = artifacts.require("./CrowdFunding.sol");
 
 contract('Cf1', function(accounts) {
@@ -63,7 +64,8 @@ contract('Cf1', function(accounts) {
             return meta.getCampaignAmount.call(4);
         }).then(function(num) {
             console.log(num);
+            console.log(ac1);
+            TestUtils.check();
         });
-
     });
 });

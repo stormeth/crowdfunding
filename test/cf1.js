@@ -65,7 +65,7 @@ contract('Cf1', function(accounts) {
         }).then(function(num) {
             console.log(num);
             console.log(ac1);
-            TestUtils.check();
+            TestUtils.check(meta);
         });
     });
 });

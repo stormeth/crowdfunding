@@ -2,8 +2,11 @@ var CrowdFunding = artifacts.require("./CrowdFunding.sol");
 
 var TestUtils = {
 
-    check: function() {
+    check: function(meta) {
+        return meta.getNumberOfCampaigns.call().then(function(num) {
+        console.log(num);
         console.log('Bye...')
+    })
     }
 /*
     showBalance: function(s) {

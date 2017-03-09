@@ -17,28 +17,24 @@ contract('Cf1', function(accounts) {
 
             return meta.newCampaign(ac1, goal);
         }).then(function() {
-            return meta.newCampaign(ac2,goal).then(function(tx2) {
-                // console.log(tx);
+            return meta.newCampaign(ac2,goal).then(function(tx1) {
+                console.log('tx1',tx1);
             })
         }).then(function() {
             return meta.newCampaign(ac3, goal);
 
         }).then(function() {
-            return meta.newCampaign(ac3, goal)
+            return meta.newCampaign(ac3, goal);
 
         }).then(function() {
-
             return meta.contribute(ac1);
-        }).then(function(payable1) {
-            console.log('p1', payable1);
 
-            return meta.contribute(ac2);
-        }).then(function(payable2) {
-            console.log('p2', payable2);
-
+        }).then(function() {
+            return meta.contribute(ac2).then(function(tx2) {
+                console.log('tx2', tx2);
+            })
             return meta.contribute(ac3);
-        }).then(function(payable3) {
-            console.log('p3', payable3);
+        }).then(function() {
             assert.equal(3, 3, "assert not working");
         });
     });
